@@ -7,3 +7,6 @@ The app allows you to explore some data showing the amount of hospital admission
 
 To see the app in action please visit:
 https://pskelton.shinyapps.io/project
+
+To see the supporting presentation please visit:
+http://rpubs.com/pskelton/128444

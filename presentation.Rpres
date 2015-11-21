@@ -1,0 +1,59 @@
+Exploring Obesity ShinyApp
+========================================================
+author: P Skelton
+date: `r date()`
+
+Introduction
+========================================================
+This small app allows you to look at a few features of obesity trends in the UK.
+The data set is published by the Health and Social Care Information Centre under
+an Open Government License. It can be found here:
+- https://data.gov.uk/dataset/statistics_on_obesity_physical_activity_and_diet_england
+
+The app can be found online at:
+- https://pskelton.shinyapps.io/project
+
+Features
+========================================================
+
+The app has three main sections
+- About: An about pages disaplying some useful information about the app and a breif user guide
+- Graphs: Interactively drawn graphs for visual comparison of the different sets of data
+- Data: Data tables of the data sets which can be searched and ordered for numeric comparison
+
+
+Example
+========================================================
+This is an example of one of the graphs the app can produce interactively. Here we can see the high correlation between the number of primary obesity admissions and bariatric surgery admissions.
+
+```{r, echo=FALSE}
+
+#code cribbed from app and altered to embed when publishing
+
+source("datastrip.R")
+library(reshape2)
+library(ggplot2)
+# need to melt data to long format depending on plot options
+            # totals by gender
+            prim <- melt(yeartotals,"Year")
+            seco <- melt(secyeartotals,"Year")
+            surg <- melt(surgerytotals,"Year")
+ # create plot using ggplot2 
+            plot <- ggplot() + ggtitle("Obesity data Graph") + xlab("Year") + ylab("Admissions")+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.title = element_blank())
+            
+            # conditionally add data frame lines depending on user selection
+           plot = plot + geom_line(data=prim, aes(x=Year, y=value, group=variable, col=variable), linetype =1)
+           plot =  plot + geom_line(data=surg, aes(x=Year, y= value, group=variable, col=variable) , linetype =5)
+          plot
+
+```
+
+Uses
+========================================================
+- Online simple product so can be accessed anywhere
+- Useful for quick reference
+- Can be used for compelling visual comparison
+- Can identify at risk gender / age groups to target response
+
+
+The data file also contains many location statistics. Improving the app to display this graphically could help highlight any regional variations.
