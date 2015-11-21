@@ -23,7 +23,8 @@ shinyUI(
                         p("The ",strong("View Data")," button is a drop down which will allow you to look at the data tables                         ."),
                         
                             br(),
-                            p(" Pskelton 2015 - github linky here"),
+                            p(" Pskelton 2015"),
+                            a("Github Repository - External Link",href="https://github.com/pskelton/dataproducts", target="_blank"),
                           br(),
                         
                           h3("Glossary and terms"),
